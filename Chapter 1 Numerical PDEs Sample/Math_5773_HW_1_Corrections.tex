@@ -1,0 +1,134 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{Homework 1-Math 5733}
+\author{Evan Shapiro \\ Master's of Integrated Science, University of Colorado Denver}
+\begin{document}
+\title{Homework 1-Corrections-Math 5733}
+\author{Evan Shapiro \\ Master's of Integrated Science, University of Colorado Denver}
+\maketitle
+1.4\\
+We start with the the following Cauchy differential equation:
+\[ v'(t)= - (\alpha + \epsilon)v(t) \]
+\[ v(0) = v_{0}, \]
+where \(\alpha > 0\) is a measured parameter of the differential equation, and \(\epsilon\) is a perturbation in the measurement.\\
+a) For a solution at time t = 1, do small perturbations in \(\alpha\) imply small changes in the solution, u(t)? In other words, is the solution at time t=1 stable for small perturbations in \(\alpha\)?\\
+First, we solve the Cauchy problem:
+\[ \frac{dv}{dt} = -(\alpha + \epsilon)v(t)\]
+
+\[ \frac{dv}{v} = -(\alpha + \epsilon)dt\]
+\[ ln(v) = -(\alpha + \epsilon)t+C \]
+\[v(t)=e^{-(\alpha +\epsilon)t+C} \]
+\[v(t) = v_{0}e^{-(\alpha+\epsilon)t}\]\\
+Expand this function with a Taylor series around the parameter value \(\alpha\) for small values of \(\epsilon\), at time t = 1.
+\[v(-(\alpha+\epsilon)) = u_{0}( e^{-\alpha} - \epsilon*e^{-c} ), \]
+where \(\epsilon*e^{-c}\) is the truncation error, and \(c \in(\alpha,\alpha+\epsilon)\), such that it maximizes the error term.
+We can use this Taylor expansion to bound the error of the perturbed function 
+about the point \(t=1\). If we define the error to be bounded by some value \(\eta\), the difference between the exact and perturbed solution is:
+\[|  e^{-(\alpha )t}-e^{-(\alpha + \epsilon)t}| \le |\epsilon*e^{-c}|, \]
+which is of order \(\epsilon\), and is thus finitely bounded.
+ Limiting the bound we see that 
+\[\lim_{\epsilon \to 0}|  e^{-(\alpha )t}-e^{-(\alpha + \epsilon)t}| \le \lim_{\epsilon \to 0}|\epsilon*e^{-c}| =0\] 
+This means that a perturbation in the parameter $\alpha$ of \( O(\epsilon)\) lead to perturbations in the data of $O(\epsilon)$ making this a stable system.\\
+\\
+b) Next we assume that both \(u_{0}\) and $\alpha$ are measured. Discuss the stability of the problem in this context.
+The solution for the Cauchy problem with both perturbed $\alpha$ and $\epsilon$  is:
+\[v(t) = (u_{0}+\epsilon_{0})e^{-(\alpha+\epsilon_{1})t}. \]
+This has a linear dependence on $u_{0}$ and an exponential dependence on $\alpha$, so it is stable with respect to small perturbations of $u_{0}$, regardless of the size of $u_{0}$, and is stable with respect to small perturbation of $\alpha$\\
+\\
+\\
+1.5(c) Solve the following Cauchy problem\\
+ \[u_{t} + xu_{x} = x\qquad {x \in \mathbb{R}, t>0}\]
+\[u(x,0) = cos(90x).\]
+This is an inhomogeneous Cauchy ODE. So first we solve for homogeneous component, a(x,t), and then solve the inhomogeneous component. In the previous problem, part (b), we saw that this type of inital condition yields the solution.
+\[u_{h} =cos(90xe^{-t})\qquad x_{0} = xe^{-t} \]
+The solution to the characteristic equation is:
+\[u_{c} = \int_{0}^t x_{0}e^{\tau}d\tau\]
+\[ u_{c} = x_{0}(e^t-1)\]
+Substituting in $x_{0}$:
+\[u_{c} = x(1 -e^{-t})\]
+The general solution is thus:
+\[u(x,t)=cos(90xe^{-t}) +x(1-e^{-t})\]
+Checking that this is the solution. The initial condition returns:\\
+\[u(x,0) = cos(90x)\]
+While substituting the general solution into the ODE yields:
+\[ u_{t} = 90xe^{-t}sin(90xe^{-t}) + e^{-t}\]
+\[ xu_{x} = -90xe^{-t}sin(90xe^{-t}) + x(1-e^{-t})\]
+\[u_{t} + xu_{x} = x\]
+Thus, the solution is verified.\\
+\\
+\\
+\large 1.14\\
+\normalsize
+Consider the following Cauchy problem:\\
+\[u_{tt} = c^2u_{xx}\]
+\[u(x,0) = \phi(x)\]
+\[u_{t}(x,0) = \psi(x)\]
+Let:\\
+\[v = u_{t} + cu_{x}.\]
+Part (a)\\
+Show that \\
+\[v_{t} - cv_{x} = 0\]
+Solution:\\
+Given that $v = u_{t} + cu_{x}$,
+\[v_{t} = u_{tt} + cu_{xt},\qquad v_{x} = u_{tx} + cu_{xx}.\]
+This problem has $ u_{tt} = c^2u_{xx}$. Regarding the cross terms, according to Clairut if a function $u$ is defined on an open set $D \in \mathbb{R}^2 $, and both $u_{xy}, u_{yx}$ are continuous throught $D$, then $ u_{xy} = u_{yx}$. Thus
+\[ v_{t} - cv_{x} = c^2u_{xx}+cu_{xt} - cu_{xt} - c^2u_{xx} =0\]
+
+Part (b):\\
+ Find v(x,t) expressed by $\phi$ and $\psi$.\\
+Solution:\\
+First recognize that:\\
+\[ \frac{\partial v(x,t) }{\partial t} = v_{t} - cv_{x},\]
+which motivates us to use the method of characteristics to solve for v(x,t)  :\\
+\[ v_{t} - cv_{x}=0\]
+\[ \frac{dx}{dt} = -c\]
+\[ x = x_{0} -ct\]
+\[x_{0} = x + ct\]
+\[ v(x,0) = v(x_{0},0) =  u_{t}(x,0) + cu_{x}(x,0)\]
+\[ v(x,t) = c\phi ' (x+ct) + \psi(x+ct) \]
+Part (c)\\
+Explain why
+\[ u(x,t) = \phi(x-ct) + \int_{0}^{t} v[x-c(t-\tau),\tau]d\tau\]
+\\
+Solution:\\
+Use the solution for $x_{0}$ from the method of characteristics to solve the inhomogeneous component of this problem.
+\[\frac{dx}{dt} = c\]
+\[ x = x_{0} +ct\]
+\[ x_{0} = x-ct\]
+\[u(x,0)= u(x,t) = \phi(x-ct) + \int_{0}^{t}v(x_{0}+c\tau, \tau) d\tau\]
+Substituting $ x_{0}$ into the integral\\
+\[u(x,t) = \phi(x-ct) + \int_{0}^{t}v(x - ct + c\tau,\tau)d\tau\]
+\[u(x,t) = \phi(x-ct) + \int_{0}^{t}v(x-c(t-\tau),\tau)  d\tau\]
+Part (d)\\
+Derive the expression\\
+\[ u(x,t) = \frac{1}{2}(\phi(x+ct) \pm \phi(x-ct)) +\frac{1}{2c}\int_{x-ct}^{x+ct}\psi(\theta)d\theta\]
+Solution:\\
+Substitute the solution from part b
+\[ v(x,t) = c\phi ' (x+ct) + \psi(x+ct) \]
+into the solution for part c\\
+\[u(x,t) = \phi(x-ct) + \int_{0}^{t}v(x-c(t-\tau),\tau)  d\tau.\]
+This becomes:
+\[ u(x,t) = \phi(x-ct) + \int_{0}^{t}c\phi'(x-c(t-\tau) +c\tau)d\tau + \int_{0}^{t}\psi(x-c(t-\tau)+\tau)d\tau,\]
+which simplifies to
+\[ u(x,t) = \phi(x-ct) + \int_{0}^{t}c\phi'(x-ct +2c\tau)d\tau + \int_{0}^{t}\psi(x-ct+2c\tau)d\tau.\]
+Lets solve the first integral
+\[\int_{0}^{t}c\phi'(x-ct +2c\tau)d\tau\]
+by subsituting in
+\[ u(\tau) = x -ct + 2c\tau, \qquad du(\tau) = 2cd\tau. \]
+The new limits of integration are:
+\[u(0) = x - ct, \qquad u(t) = x + ct\]
+The new integral is:
+\[\frac{1}{2}\int_{x-ct}^{x+ct}\phi'(u)du\]
+In part b we took the derivative of $\phi$ with respect to x to yield $\phi'$. Using calculus we see
+\[\frac{d\phi}{dx} = \frac{du}{dx}\frac{d\phi}{du}\]
+with
+\[\frac{du}{dx} = 1\]
+So the integral becomes:
+\[\frac{1}{2}\int_{x-ct}^{x+ct}d\phi(u),\]
+which according to the Fundamental Theorem of Calculus yields
+\[ \int_{0}^{t}c\phi'(x-ct +2c\tau)d\tau = \frac{1}{2}(\phi(x+ct)-\phi(x-ct)).\]
+Using the same u-subsitution in the second integral as we did for the first yields the following solution for u(x,t):
+\[ \int_{0}^{t}\psi(x-ct+2c\tau)d\tau= \frac{1}{2c}\int_{x-ct}^{x+ct}\psi(u)du\]
+\end{document}
